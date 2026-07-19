@@ -1,24 +1,72 @@
-# Compiled executables
-discrete-math-toolkit
-discrete-math-toolkit.exe
-*.exe
-*.out
+# =====================
+# Jalen's .gitignore
+# ===================
 
-# Object and library files
-*.o
-*.obj
-*.a
-*.lib
-*.so
-*.dll
-*.dylib
 
-# Build directories
-build/
-cmake-build-*/
-
-# Editor and operating-system files
-.vscode/
-.idea/
+# =====================
+# OS files
+# =====================
 .DS_Store
 Thumbs.db
+
+# =====================
+# Editor / IDE files
+# =====================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =====================
+# Logs
+# =====================
+*.log
+logs/
+
+# =====================
+# Dependencies
+# =====================
+node_modules/
+vendor/
+
+# =====================
+# Environment variables
+# =====================
+.env
+.env.*
+!.env.example
+
+# =====================
+# Build / output
+# =====================
+dist/
+build/
+out/
+
+# =====================
+# Python
+# =====================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# =====================
+# Java
+# =====================
+*.class
+*.jar
+
+# =====================
+# Testing / coverage
+# =====================
+coverage/
+
+# =====================
+# Temporary files
+# =====================
+tmp/
+temp/
+.cache/
