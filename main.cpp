@@ -6,6 +6,7 @@ Last Modified: 2026-07-19
 */
 
 #include <iostream>
+#include "SetOperations.hpp"
 
 using namespace std;
 
@@ -35,6 +36,8 @@ do {
     switch (choice) {
         case 1:
             cout << "Set Operations selected.\n";
+            SetOperations setOps;
+            setOps.setMenu();
             break;
         case 2:
             cout << "Relation Checker selected.\n";
