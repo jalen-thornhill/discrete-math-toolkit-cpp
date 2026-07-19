@@ -1,0 +1,24 @@
+# Compiled executables
+discrete-math-toolkit
+discrete-math-toolkit.exe
+*.exe
+*.out
+
+# Object and library files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# Build directories
+build/
+cmake-build-*/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
