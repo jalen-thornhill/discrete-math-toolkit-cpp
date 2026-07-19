@@ -14,12 +14,12 @@ A command-line toolkit for practicing and demonstrating core discrete mathematic
 ## Project Structure
 
 - `main.cpp` — program entry point and main menu
-- `SetOperations.*` — set operations
-- `Relations.*` — relation checking
-- `Functions.*` — function checking
-- `NumberTheory.*` — number-theory tools
-- `Sequences.*` — sequence calculations
-- `Matrices.*` — matrix operations
+- `SetOperations.cpp` / `SetOperations.hpp` — set operations
+- `Relations.cpp` / `Relations.hpp` — relation checking
+- `Functions.cpp` / `Functions.hpp` — function checking
+- `NumberTheory.cpp` / `NumberTheory.hpp` — number-theory tools
+- `Sequences.cpp` / `Sequences.hpp` — sequence calculations
+- `Matrices.cpp` / `Matrices.hpp` — matrix operations
 
 ## Build
 
