@@ -9,6 +9,8 @@ Last Modified: 2026-07-26
 #include "SetOperations.hpp"
 #include "Relations.hpp"
 #include "Functions.hpp"
+#include "NumberTheory.hpp"
+#include "Sequences.hpp"
 
 using namespace std;
 
@@ -54,12 +56,18 @@ do {
             functions.functionsMenu();
             break;
         }
-        case 4:
+        case 4: {
             cout << "Euclidean Algorithm selected.\n";
+            NumberTheory numberTheory;
+            numberTheory.euclideanAlgorithmMenu();
             break;
-        case 5:
+        }
+        case 5: {
             cout << "Sequence Calculator selected.\n";
+            Sequences sequences;
+            sequences.sequenceMenu();
             break;
+        }
         case 6:
             cout << "Matrix Operations selected.\n";
             break;
