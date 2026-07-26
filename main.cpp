@@ -2,11 +2,13 @@
 File Name: main.cpp
 Author: Jalen Thornhill
 Created: 2026-07-19
-Last Modified: 2026-07-19
+Last Modified: 2026-07-26
 */
 
 #include <iostream>
 #include "SetOperations.hpp"
+#include "Relations.hpp"
+#include "Functions.hpp"
 
 using namespace std;
 
@@ -34,17 +36,24 @@ do {
 
 
     switch (choice) {
-        case 1:
+        case 1: {
             cout << "Set Operations selected.\n";
             SetOperations setOps;
             setOps.setMenu();
             break;
-        case 2:
+        }
+        case 2: {
             cout << "Relation Checker selected.\n";
+            Relations relations;
+            relations.relationMenu();
             break;
-        case 3:
+        }
+        case 3: {
             cout << "Function Checker selected.\n";
+            Functions functions;
+            functions.functionsMenu();
             break;
+        }
         case 4:
             cout << "Euclidean Algorithm selected.\n";
             break;

@@ -118,6 +118,7 @@ void Functions::functionsMenu() {
 }
 
 bool Functions::isValid(const vector<pair<int, int>>& mappings) {
+    //tl;dr: if a domain value is mapped to more than one codomain value, then the function is not valid
     map<int, int> seen;
 
     for (const auto& duo : mappings) {
@@ -132,11 +133,22 @@ bool Functions::isValid(const vector<pair<int, int>>& mappings) {
             seen[domain] = codomain;
         }
     }
+     for (const auto& duo : mappings) {
+        int domain = duo.first;
+        if (seen.count(domain) > 1) {
+            return false;
+        }
+    }
 
     return true;
 }
 
 bool Functions::isInjective(const vector<pair<int, int>>& mappings) {
+    // if the function is not valid, it cannot be injective
+
+
+    if(!isValid(mappings)) return false;
+    //tl;dr: if a codomain value is mapped to by more than one domain value, then the function is not injective
     map<int, int> seen;
 
     for (const auto& duo : mappings) {
@@ -156,5 +168,6 @@ bool Functions::isInjective(const vector<pair<int, int>>& mappings) {
 }
 
 bool Functions::isBijective(const vector<pair<int, int>>& mappings) {
+    //if the function is valid and injective, then it is bijective
     return isValid(mappings) && isInjective(mappings);
 }
