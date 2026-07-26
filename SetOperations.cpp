@@ -16,7 +16,11 @@ void SetOperations::setMenu() {
         vector<int> setA, setB;
 
         cout << "Enter the number of elements in Set A: ";
-        cin >> a;
+        while(!(cin >> a) || a < 0) {
+            cout << "Please enter a non-negative integer ";
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
 
         cout << "Enter the elements of Set A: ";
         for(int i = 0; i < a; i++) {
@@ -26,7 +30,11 @@ void SetOperations::setMenu() {
         }
 
         cout << "Enter the number of elements in Set B: ";
-        cin >> b;
+        while(!(cin >> b) || b < 0) {
+            cout << "Please enter a non-negative integer ";
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
 
         cout << "Enter the elements of Set B: ";
         for(int i = 0; i < b; i++) {
@@ -89,13 +97,14 @@ void SetOperations::setMenu() {
             }
             case 4: {
                 cout << "Cartesian Product selected.\n";
-                vector<pair<int, int>> cartesianResult = cartesianProductOp(setA, setB);
+                set<pair<int, int>> cartesianResult = cartesianProductOp(setA, setB);
 
                 cout << "Cartesian Product of Set A and Set B: ";
                 for (const auto& pair : cartesianResult) {
                     cout << "(" << pair.first << ", " << pair.second << ") ";
                 }
                 cout << "\n";
+                
                 break;
             }
 
@@ -113,7 +122,7 @@ void SetOperations::setMenu() {
 
         
 
-set<int> SetOperations::unionOp(vector<int> setA, vector<int> setB) {
+set<int> SetOperations::unionOp(vector<int>& setA, vector<int>& setB) {
     // Implementation for union operation
     set<int> res;
     for (int num : setA) {
@@ -127,7 +136,7 @@ set<int> SetOperations::unionOp(vector<int> setA, vector<int> setB) {
 }
 
 
-set<int> SetOperations::intersectionOp(vector<int> setA, vector<int> setB) {
+set<int> SetOperations::intersectionOp(vector<int>& setA, vector<int>& setB) {
     // Implementation for intersection operation
     set<int> res;
     for (auto num : setA){
@@ -139,7 +148,7 @@ set<int> SetOperations::intersectionOp(vector<int> setA, vector<int> setB) {
     return res;
 }   
 
-set<int> SetOperations::differenceOp(vector<int> setA, vector<int> setB) {
+set<int> SetOperations::differenceOp(vector<int>& setA, vector<int>& setB) {
     // Implementation for difference operation
         set<int> res;
     for (auto num : setA){
@@ -153,14 +162,14 @@ set<int> SetOperations::differenceOp(vector<int> setA, vector<int> setB) {
 }   
 
 
-vector<pair<int, int>> SetOperations::cartesianProductOp(vector<int> setA, vector<int> setB) {
+set<pair<int, int>> SetOperations::cartesianProductOp(vector<int>& setA, vector<int>& setB) {
     // Implementation for cartesian product operation
-    vector<pair<int, int>> res;
+    set<pair<int, int>> res;
 
     for (auto numA : setA){
         
         for (auto numB : setB){
-            res.push_back(make_pair(numA, numB));
+            res.insert(make_pair(numA, numB));
         }
     }
     return res;

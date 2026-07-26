@@ -18,11 +18,11 @@ class SetOperations {
 public:
     void setMenu();
     
-    set<int> unionOp(vector<int> setA, vector<int> setB);
+    set<int> unionOp(vector<int>& setA, vector<int>& setB);
 
-    set<int> intersectionOp(vector<int> setA, vector<int> setB);
+    set<int> intersectionOp(vector<int>& setA, vector<int>& setB);
 
-    set<int> differenceOp(vector<int> setA, vector<int> setB);
+    set<int> differenceOp(vector<int>& setA, vector<int>& setB);
 
-    vector<pair<int, int>> cartesianProductOp(vector<int> setA, vector<int> setB);
+    set<pair<int, int>> cartesianProductOp(vector<int>& setA, vector<int>& setB);
 };
