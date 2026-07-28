@@ -2,7 +2,7 @@
 File Name: Functions.cpp
 Author: Jalen Thornhill
 Created: 2026-07-19
-Last Modified: 2026-07-26
+Last Modified: 2026-07-27
 */
 
 #include "Functions.hpp"
@@ -24,6 +24,11 @@ void Functions::functionsMenu() {
 
         if (num == -1) {
             break;
+        }
+
+        if (find(domain.begin(), domain.end(), num) != domain.end()) {
+            cout << "That value is already in the domain. Try again.\n";
+            continue;
         }
 
         domain.push_back(num);
@@ -65,6 +70,11 @@ void Functions::functionsMenu() {
             continue;
         }
 
+        if (find(mappings.begin(), mappings.end(), make_pair(domainValue, codomainValue)) != mappings.end()) {
+            cout << "That mapping has already been entered. Try again.\n";
+            continue;
+        }
+
         mappings.push_back(make_pair(domainValue, codomainValue));
     }
 
@@ -86,7 +96,7 @@ void Functions::functionsMenu() {
         switch (choice) {
             case 1:
                 cout << "Check Validity selected.\n";
-                if (isValid(mappings)) {
+                if (isValid(mappings, domain)) {
                     cout << "The mappings form a valid function.\n";
                 } else {
                     cout << "The mappings do not form a valid function.\n";
@@ -94,7 +104,7 @@ void Functions::functionsMenu() {
                 break;
             case 2:
                 cout << "Check Injectivity selected.\n";
-                if (isInjective(mappings)) {
+                if (isInjective(mappings, domain)) {
                     cout << "The function is injective.\n";
                 } else {
                     cout << "The function is not injective.\n";
@@ -102,7 +112,7 @@ void Functions::functionsMenu() {
                 break;
             case 3:
                 cout << "Check Bijectivity selected.\n";
-                if (isBijective(mappings)) {
+                if (isBijective(mappings, domain)) {
                     cout << "The function is bijective.\n";
                 } else {
                     cout << "The function is not bijective.\n";
@@ -117,7 +127,7 @@ void Functions::functionsMenu() {
     } while (choice != 4);
 }
 
-bool Functions::isValid(const vector<pair<int, int>>& mappings) {
+bool Functions::isValid(const vector<pair<int, int>>& mappings, const vector<int>& domain) {
     //tl;dr: if a domain value is mapped to more than one codomain value, then the function is not valid
     map<int, int> seen;
 
@@ -133,21 +143,16 @@ bool Functions::isValid(const vector<pair<int, int>>& mappings) {
             seen[domain] = codomain;
         }
     }
-     for (const auto& duo : mappings) {
-        int domain = duo.first;
-        if (seen.count(domain) > 1) {
-            return false;
-        }
+    for (int value : domain) {
+        if (!seen.count(value)) return false;
     }
 
     return true;
 }
 
-bool Functions::isInjective(const vector<pair<int, int>>& mappings) {
+bool Functions::isInjective(const vector<pair<int, int>>& mappings, const vector<int>& domain) {
     // if the function is not valid, it cannot be injective
-
-
-    if(!isValid(mappings)) return false;
+    if(!isValid(mappings, domain)) return false;
     //tl;dr: if a codomain value is mapped to by more than one domain value, then the function is not injective
     map<int, int> seen;
 
@@ -167,7 +172,7 @@ bool Functions::isInjective(const vector<pair<int, int>>& mappings) {
     return true;
 }
 
-bool Functions::isBijective(const vector<pair<int, int>>& mappings) {
+bool Functions::isBijective(const vector<pair<int, int>>& mappings, const vector<int>& domain) {
     //if the function is valid and injective, then it is bijective
-    return isValid(mappings) && isInjective(mappings);
+    return isValid(mappings, domain) && isInjective(mappings, domain);
 }

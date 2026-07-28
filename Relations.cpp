@@ -2,7 +2,7 @@
 File Name: Relations.cpp
 Author: Jalen Thornhill
 Created: 2026-07-19
-Last Modified: 2026-07-26
+Last Modified: 2026-07-27
 */
 
 #include "Relations.hpp"
@@ -39,6 +39,13 @@ void Relations::relationMenu() {
             cin.clear();
             cin.ignore(10000, '\n');
         }
+
+        if (find(relation.begin(), relation.end(), make_pair(pairFirst, pairSecond)) != relation.end()) {
+            cout << "That pair has already been entered. Try again.\n";
+            i--;
+            continue;
+        }
+
         relation.push_back(make_pair(pairFirst, pairSecond));
     }
 

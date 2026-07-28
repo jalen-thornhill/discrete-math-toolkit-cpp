@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500">
+  <rect width="960" height="500" rx="16" fill="#111827"/>
+  <rect width="960" height="48" rx="16" fill="#1f2937"/>
+  <circle cx="28" cy="24" r="7" fill="#ef4444"/>
+  <circle cx="52" cy="24" r="7" fill="#f59e0b"/>
+  <circle cx="76" cy="24" r="7" fill="#22c55e"/>
+  <text x="104" y="30" fill="#d1d5db" font-family="Consolas, monospace" font-size="16">Discrete Math Toolkit</text>
+  <g fill="#e5e7eb" font-family="Consolas, monospace" font-size="18">
+    <text x="28" y="84">Main Menu</text>
+    <text x="28" y="114">1. Set Operations</text>
+    <text x="28" y="144">2. Relation Checker</text>
+    <text x="28" y="174">3. Function Checker</text>
+    <text x="28" y="204">4. Euclidean Algorithm</text>
+    <text x="28" y="234">5. Sequence Calculator</text>
+    <text x="28" y="264">6. Matrix Operations</text>
+    <text x="28" y="294">7. Exit</text>
+    <text x="28" y="334" fill="#93c5fd">Enter your choice: 4</text>
+    <text x="28" y="370">Enter the first integer: 48</text>
+    <text x="28" y="400">Enter the second integer: 18</text>
+    <text x="500" y="114">48 = 18 * 2 + 12</text>
+    <text x="500" y="144">18 = 12 * 1 + 6</text>
+    <text x="500" y="174">12 = 6 * 2 + 0</text>
+    <text x="500" y="214" fill="#86efac">GCD: 6</text>
+    <text x="500" y="274">Arithmetic sequence</text>
+    <text x="500" y="310" fill="#fcd34d">2, 5, 8, 11, 14</text>
+    <text x="28" y="450" fill="#9ca3af">Built with C++17</text>
+  </g>
+</svg>

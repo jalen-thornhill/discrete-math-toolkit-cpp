@@ -2,7 +2,7 @@
 File Name: SetOperations.cpp
 Author: Jalen Thornhill
 Created: 2026-07-19
-Last Modified: 2026-07-19
+Last Modified: 2026-07-27
 */
 
 #include "SetOperations.hpp"
@@ -22,7 +22,19 @@ void SetOperations::setMenu() {
         cout << "Enter the elements of Set A: ";
         for(int i = 0; i < a; i++) {
             int element;
-            cin >> element;
+
+            while(!(cin >> element)) {
+                cout << "Please enter an integer: ";
+                cin.clear();
+                cin.ignore(10000, '\n');
+            }
+
+            if (find(setA.begin(), setA.end(), element) != setA.end()) {
+                cout << "That value is already in Set A. Try again: ";
+                i--;
+                continue;
+            }
+
             setA.push_back(element);
         }
 
@@ -36,7 +48,19 @@ void SetOperations::setMenu() {
         cout << "Enter the elements of Set B: ";
         for(int i = 0; i < b; i++) {
             int element;
-            cin >> element;
+
+            while(!(cin >> element)) {
+                cout << "Please enter an integer: ";
+                cin.clear();
+                cin.ignore(10000, '\n');
+            }
+
+            if (find(setB.begin(), setB.end(), element) != setB.end()) {
+                cout << "That value is already in Set B. Try again: ";
+                i--;
+                continue;
+            }
+
             setB.push_back(element);
         }
 
