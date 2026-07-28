@@ -6,9 +6,6 @@ Last Modified: 2026-07-19
 */
 
 #include "SetOperations.hpp"
-
-
-
 void SetOperations::setMenu() {
     // Implementation for setting the menu
         int a, b;

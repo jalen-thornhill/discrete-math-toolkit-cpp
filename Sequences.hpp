@@ -15,7 +15,7 @@ using namespace std;
 class Sequences {
     public:
         void sequenceMenu();
-        vector<int> generateArithmeticSequence(int firstTerm, int commonDifference, int numberOfTerms);
-        vector<int> generateGeometricSequence(int firstTerm, int commonRatio, int numberOfTerms);
-        void displaySequence(const vector<int>& sequence);
+        vector<long long> generateArithmeticSequence(long long firstTerm, long long commonDifference, int numberOfTerms);
+        vector<long long> generateGeometricSequence(long long firstTerm, long long commonRatio, int numberOfTerms);
+        void displaySequence(const vector<long long>& sequence);
 };

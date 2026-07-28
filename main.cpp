@@ -11,6 +11,7 @@ Last Modified: 2026-07-26
 #include "Functions.hpp"
 #include "NumberTheory.hpp"
 #include "Sequences.hpp"
+#include "Matrices.hpp"
 
 using namespace std;
 
@@ -68,9 +69,12 @@ do {
             sequences.sequenceMenu();
             break;
         }
-        case 6:
+        case 6: {
             cout << "Matrix Operations selected.\n";
+            Matrices matrices;
+            matrices.matrixMenu();
             break;
+        }
         case 7:
             cout << "Exiting the program.  See you later, Goodbye\n";
             break;

@@ -6,6 +6,7 @@ Last Modified: 2026-07-26
 */
 
 #include "Sequences.hpp"
+#include <limits>
 
 void Sequences::sequenceMenu() {
     int choice;
@@ -25,7 +26,8 @@ void Sequences::sequenceMenu() {
 
         switch (choice) {
             case 1: {
-                int firstTerm, commonDifference, numberOfTerms;
+                long long firstTerm, commonDifference;
+                int numberOfTerms;
 
                 cout << "Enter the first term: ";
                 while (!(cin >> firstTerm)) {
@@ -52,15 +54,15 @@ void Sequences::sequenceMenu() {
                 cout << "Number of terms must be greater than 0 :P"<< "\n";
                 break;
                }
-            
 
-                vector<int> sequence = generateArithmeticSequence(firstTerm, commonDifference, numberOfTerms);
+                vector<long long> sequence = generateArithmeticSequence(firstTerm, commonDifference, numberOfTerms);
 
-                displaySequence(sequence);
+                if (!sequence.empty()) displaySequence(sequence);
                 break;
             }
             case 2: {
-                int firstTerm, commonRatio, numberOfTerms;
+                long long firstTerm, commonRatio;
+                int numberOfTerms;
 
                 cout << "Enter the first term: ";
                 while (!(cin >> firstTerm)) {
@@ -88,9 +90,9 @@ void Sequences::sequenceMenu() {
                 break;
                }
 
-                vector<int> sequence = generateGeometricSequence(firstTerm,commonRatio,numberOfTerms);
+                vector<long long> sequence = generateGeometricSequence(firstTerm, commonRatio, numberOfTerms);
 
-                displaySequence(sequence);
+                if (!sequence.empty()) displaySequence(sequence);
                 break;
             }
             case 3:
@@ -103,37 +105,60 @@ void Sequences::sequenceMenu() {
     } while (choice != 3);
 }
 
-vector<int> Sequences::generateArithmeticSequence(int firstTerm, int commonDifference,int numberOfTerms) {
-    vector<int> sequence;
-    int num = firstTerm;
+vector<long long> Sequences::generateArithmeticSequence(long long firstTerm, long long commonDifference, int numberOfTerms) {
+    vector<long long> sequence;
+    long long num = firstTerm;
     sequence.push_back(num);
 
-    for(size_t i = 1; i < numberOfTerms; i++) {
-        
+    for(int i = 1; i < numberOfTerms; i++) {
+        if (commonDifference > 0 && num > numeric_limits<long long>::max() - commonDifference) {
+            cout << "The sequence became too large to calculate.\n";
+            sequence.clear();
+            return sequence;
+        }
+
+        if (commonDifference < 0 && num < numeric_limits<long long>::min() - commonDifference) {
+            cout << "The sequence became too large to calculate.\n";
+            sequence.clear();
+            return sequence;
+        }
+
         num += commonDifference;
         sequence.push_back(num);
-    }   
+    }
 
     return sequence;
 }
 
-vector<int> Sequences::generateGeometricSequence(int firstTerm, int commonRatio,int numberOfTerms) {
-    vector<int> sequence;
-    int num = firstTerm;
+vector<long long> Sequences::generateGeometricSequence(long long firstTerm, long long commonRatio, int numberOfTerms) {
+    vector<long long> sequence;
+    long long num = firstTerm;
     sequence.push_back(num);
 
-    for(size_t i = 1; i < numberOfTerms; i++) {
-        
+    for(int i = 1; i < numberOfTerms; i++) {
+        bool tooLarge = false;
+
+        if (num == -1 && commonRatio == numeric_limits<long long>::min()) tooLarge = true;
+        else if (commonRatio == -1 && num == numeric_limits<long long>::min()) tooLarge = true;
+        else if (num > 0 && commonRatio > 0 && num > numeric_limits<long long>::max() / commonRatio) tooLarge = true;
+        else if (num > 0 && commonRatio < 0 && commonRatio < numeric_limits<long long>::min() / num) tooLarge = true;
+        else if (num < 0 && commonRatio > 0 && num < numeric_limits<long long>::min() / commonRatio) tooLarge = true;
+        else if (num < 0 && commonRatio < 0 && num < numeric_limits<long long>::max() / commonRatio) tooLarge = true;
+
+        if (tooLarge) {
+            cout << "The sequence became too large to calculate.\n";
+            sequence.clear();
+            return sequence;
+        }
+
         num *= commonRatio;
         sequence.push_back(num);
     }
 
-    
-
     return sequence;
 }
 
-void Sequences::displaySequence(const vector<int>& sequence) {
+void Sequences::displaySequence(const vector<long long>& sequence) {
     cout << "Sequence: ";
 
     for (size_t i = 0; i < sequence.size(); i++) {
